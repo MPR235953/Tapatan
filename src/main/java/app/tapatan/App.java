@@ -1,11 +1,17 @@
 package app.tapatan;
 
+import app.tapatan.classes.Board;
+import app.tapatan.classes.Tile;
+import app.tapatan.classes.Board.*;
+import app.tapatan.classes.TileType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static app.tapatan.classes.Board.TileTable;
 
 public class App extends Application {
     @Override
@@ -18,6 +24,15 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+      //  launch();
+    /*    Tile p[][] = new Tile[2][2];
+        Tile p1 = new Tile();
+        Tile ti1 = TileTable[1][1];
+        System.out.println(TileTable[1][1]);
+
+     */
+        Board board = new Board();
+        Tile ti1 =  board.TileTable[1][1];
+
     }
 }
