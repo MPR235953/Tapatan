@@ -9,6 +9,16 @@ public class Board{
     public static Tile[][] TileTable = new Tile[JAKA_DLUGOSC_WARIACIE][JAKA_SZEROKOSC_WARIACIE];
 
 
+    public Board(){
+        for (int i = 0; i<JAKA_DLUGOSC_WARIACIE ; i++){
+            for (int j= 0; j<JAKA_SZEROKOSC_WARIACIE ; j++){
+                Tile tile  = new Tile();
+                    TileTable[i][j] =tile;
+            }
+        }
+
+
+    }
 
     Tile getTileat(Point point){return TileTable[point.x][point.y];}
 

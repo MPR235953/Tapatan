@@ -31,8 +31,8 @@ public class App extends Application {
         System.out.println(TileTable[1][1]);
 
      */
-       // Board board = new Board();
-        Tile ti1 =  TileTable[1][1];
+        Board board = new Board();
+        Tile ti1 =  board.TileTable[1][1];
 
     }
 }
