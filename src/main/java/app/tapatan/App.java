@@ -17,22 +17,21 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("start.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 600, 710);
+        stage.setTitle("Tapatan");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
-      //  launch();
+        launch();
     /*    Tile p[][] = new Tile[2][2];
         Tile p1 = new Tile();
         Tile ti1 = TileTable[1][1];
         System.out.println(TileTable[1][1]);
 
-     */
         Board board = new Board();
         Tile ti1 =  board.TileTable[1][1];
-
+     */
     }
 }

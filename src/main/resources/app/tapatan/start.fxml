@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="app.tapatan.AppController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="36.0" layoutY="33.0" text="Tura      gracza" textAlignment="CENTER">
+         <font>
+            <Font name="Rubik-Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="342.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="RESET" />
+      <Button layoutX="467.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="OK" />
+      <Label layoutX="130.0" layoutY="25.0" text="1" textAlignment="CENTER">
+         <font>
+            <Font name="Rubik-Bold" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="600.0" fitWidth="600.0" layoutY="110.0">
+         <image>
+            <Image url="@arts/map_600.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
