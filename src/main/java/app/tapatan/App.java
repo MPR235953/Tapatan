@@ -7,8 +7,10 @@ import app.tapatan.classes.TileType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 import static app.tapatan.classes.Board.TileTable;
@@ -18,6 +20,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("start.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 710);
+
+        Image icon = new Image(new File("src/main/resources/app/tapatan/arts/fire_tepig_200.png").toURI().toString());
+        stage.getIcons().add(icon);
         stage.setTitle("Tapatan");
         stage.setScene(scene);
         stage.show();
