@@ -24,6 +24,10 @@ public class App extends Application {
         Image icon = new Image(new File("src/main/resources/app/tapatan/arts/fire_tepig_200.png").toURI().toString());
         stage.getIcons().add(icon);
         stage.setTitle("Tapatan");
+
+
+
+
         stage.setScene(scene);
         stage.show();
     }
