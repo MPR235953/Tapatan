@@ -1,6 +1,7 @@
 package app.tapatan;
 
 import app.tapatan.classes.Board;
+import app.tapatan.classes.Player;
 import app.tapatan.classes.Tile;
 import app.tapatan.classes.Board.*;
 import app.tapatan.classes.TileType;
@@ -19,6 +20,7 @@ public class App extends Application {
     static public int TILE_SIZE = 200;
     static public int BOARD_Y_OFFSET = 110;
     static public Board board = new Board();
+    static public Player testPlayer = new Player();
 
     @Override
     public void start(Stage stage) throws IOException {

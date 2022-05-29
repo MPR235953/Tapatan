@@ -21,6 +21,10 @@ public class AppController {
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
         pane.setImage(new Image(new File("src/main/resources/app/tapatan/arts/pane.png").toURI().toString()));
         root.getChildren().add(App.board);
+        root.getChildren().add(App.testPlayer.checkers);
+
+//        ImageView img = new ImageView();
+//        img.setImage(new Image("file:src/main/resources/app/tapatan/arts/fire_charmander_200.png"));
     }
 
     @FXML private Label playerNr;
