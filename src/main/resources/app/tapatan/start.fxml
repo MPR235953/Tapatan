@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.tapatan.AppController">
    <children>
-      <ImageView fx:id="map" fitHeight="600.0" fitWidth="600.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
+      <ImageView fx:id="map" fitHeight="600.0" fitWidth="600.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
          <effect>
             <DropShadow />
          </effect>
@@ -20,7 +20,7 @@
             <Image url="@arts/map_600.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pane" fitHeight="115.0" fitWidth="600.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="pane" fitHeight="115.0" fitWidth="600.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@arts/pane.png" />
          </image>
@@ -28,12 +28,12 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <Label fx:id="text" layoutX="36.0" layoutY="33.0" text="Tura      gracza" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="36.0">
+      <Label fx:id="text" layoutX="36.0" layoutY="33.0" text="Tura      gracza" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="633.8" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="311.2" AnchorPane.topAnchor="33.0">
          <font>
             <Font name="Rubik-Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="reset" layoutX="342.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" styleClass="button-reset" AnchorPane.rightAnchor="167.6">
+      <Button fx:id="reset" layoutX="342.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" styleClass="button-reset" AnchorPane.bottomAnchor="609.6" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="167.6" AnchorPane.topAnchor="10.0">
          <effect>
             <DropShadow />
          </effect>
@@ -41,7 +41,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="ok" layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" AnchorPane.rightAnchor="48.60000000000002">
+      <Button fx:id="ok" layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" AnchorPane.bottomAnchor="609.6" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="48.599999999999994" AnchorPane.topAnchor="10.0">
          <styleClass>
             <String fx:value="button-ok" />
             <String fx:value="button" />
@@ -53,7 +53,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="playerNr" layoutX="130.0" layoutY="26.0" text="1" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="130.0">
+      <Label fx:id="playerNr" layoutX="130.0" layoutY="26.0" text="1" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="633.8" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="311.2" AnchorPane.topAnchor="33.0">
          <font>
             <Font name="Rubik-Bold" size="48.0" />
          </font>
