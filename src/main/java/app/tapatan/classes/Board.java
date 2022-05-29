@@ -10,10 +10,10 @@ public class Board{
 
 
     public Board(){
-        for (int i = 0; i<JAKA_DLUGOSC_WARIACIE ; i++){
-            for (int j= 0; j<JAKA_SZEROKOSC_WARIACIE ; j++){
-                Tile tile  = new Tile();
-                    TileTable[i][j] =tile;
+        for (int y = 0; y < JAKA_DLUGOSC_WARIACIE; y++){
+            for (int x = 0; x < JAKA_SZEROKOSC_WARIACIE; x++){
+                Tile tile  = new Tile(x,y);
+                    TileTable[y][x] = tile;
             }
         }
 

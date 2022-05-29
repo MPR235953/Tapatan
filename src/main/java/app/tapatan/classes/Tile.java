@@ -10,10 +10,9 @@ public class Tile {
 
     public TileType tileType = TileType.TILE_EMPTY;
     public Point point = new Point();
-    public Tile(){
-        tileType = TILE_EMPTY;
-        point.x = 0;
-        point.y = 0;
+    public Tile(int x, int y){
+        point.x = x;
+        point.y = y;
     }
     public void setTileType(TileType tileType) {
         this.tileType = tileType;
