@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="app.tapatan.AppController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.tapatan.AppController">
+   <children>
+      <ImageView fx:id="map" fitHeight="600.0" fitWidth="600.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@arts/map_600.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pane" fitHeight="115.0" fitWidth="600.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@arts/pane.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label fx:id="text" layoutX="36.0" layoutY="33.0" text="Tura      gracza" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="633.8" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="311.2" AnchorPane.topAnchor="33.0">
+         <font>
+            <Font name="Rubik-Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="reset" layoutX="342.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" styleClass="button-reset" AnchorPane.bottomAnchor="609.6" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="167.6" AnchorPane.topAnchor="10.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="ok" layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" AnchorPane.bottomAnchor="609.6" AnchorPane.leftAnchor="461.0" AnchorPane.rightAnchor="48.599999999999994" AnchorPane.topAnchor="10.0">
+         <styleClass>
+            <String fx:value="button-ok" />
+            <String fx:value="button" />
+         </styleClass>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="playerNr" layoutX="130.0" layoutY="26.0" text="1" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="633.8" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="311.2" AnchorPane.topAnchor="33.0">
+         <font>
+            <Font name="Rubik-Bold" size="48.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
