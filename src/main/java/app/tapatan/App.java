@@ -17,6 +17,8 @@ import static app.tapatan.classes.Board.TileTable;
 
 public class App extends Application {
     static public int TILE_SIZE = 200;
+    static public int BOARD_Y_OFFSET = 110;
+    static public Board board = new Board();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -26,7 +28,6 @@ public class App extends Application {
         Image icon = new Image(new File("src/main/resources/app/tapatan/arts/fire_tepig_200.png").toURI().toString());
         stage.getIcons().add(icon);
         stage.setTitle("Tapatan");
-
 
 
 

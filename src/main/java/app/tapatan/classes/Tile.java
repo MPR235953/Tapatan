@@ -19,8 +19,9 @@ public class Tile extends Rectangle {
         point.y = y;
         this.setWidth(App.TILE_SIZE);
         this.setHeight(App.TILE_SIZE);
-        this.relocate(x * App.TILE_SIZE, y * App.TILE_SIZE);
-        //this.setFill((x + y) % 2 == 0 ? Color.ALICEBLUE : Color.RED);
+        this.relocate(x * App.TILE_SIZE, y * App.TILE_SIZE + App.BOARD_Y_OFFSET);
+        this.setFill(Color.TRANSPARENT);
+        this.setStroke(Color.rgb(255,255,255,0.5));
     }
     public void setTileType(TileType tileType) {
         this.tileType = tileType;

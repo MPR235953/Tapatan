@@ -1,5 +1,6 @@
 package app.tapatan;
 
+import app.tapatan.classes.Board;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -19,6 +20,7 @@ public class AppController {
     public void initialize(){
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
         pane.setImage(new Image(new File("src/main/resources/app/tapatan/arts/pane.png").toURI().toString()));
+        root.getChildren().add(App.board);
     }
 
     @FXML private Label playerNr;
