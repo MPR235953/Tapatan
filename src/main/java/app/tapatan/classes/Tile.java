@@ -1,12 +1,14 @@
 package app.tapatan.classes;
 
+import javafx.scene.shape.Rectangle;
+
 import static app.tapatan.classes.Board.TileTable;
 import static app.tapatan.classes.TileType.TILE_EMPTY;
 
 //współrzedne dałem jakby miały się przydać
 //Można usunąć
 
-public class Tile {
+public class Tile extends Rectangle {
 
     public TileType tileType = TileType.TILE_EMPTY;
     public Point point = new Point();

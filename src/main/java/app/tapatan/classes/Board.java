@@ -1,8 +1,9 @@
 package app.tapatan.classes;
 
 import app.tapatan.classes.Tile;
+import javafx.scene.Group;
 
-public class Board{
+public class Board extends Group {
 
     public static int JAKA_SZEROKOSC_WARIACIE = 3;
     public static int JAKA_DLUGOSC_WARIACIE = 3;
