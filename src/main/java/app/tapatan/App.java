@@ -16,6 +16,8 @@ import java.io.IOException;
 import static app.tapatan.classes.Board.TileTable;
 
 public class App extends Application {
+    static public int TILE_SIZE = 200;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("start.fxml"));
