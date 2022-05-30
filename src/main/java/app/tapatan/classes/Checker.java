@@ -1,6 +1,6 @@
 package app.tapatan.classes;
 
-import app.tapatan.App;
+import app.tapatan.TapatanGame;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,8 +28,8 @@ public class Checker extends ImageView {
     }
 
     public void move(int x, int y) {
-        oldX = x * App.TILE_SIZE;
-        oldY = y * App.TILE_SIZE + App.BOARD_Y_OFFSET;
+        oldX = x * TapatanGame.TILE_SIZE;
+        oldY = y * TapatanGame.TILE_SIZE + TapatanGame.BOARD_Y_OFFSET;
         relocate(oldX, oldY);
     }
     public void abortMove() {

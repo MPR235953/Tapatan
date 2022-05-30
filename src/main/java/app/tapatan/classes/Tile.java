@@ -1,6 +1,6 @@
 package app.tapatan.classes;
 
-import app.tapatan.App;
+import app.tapatan.TapatanGame;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -17,9 +17,9 @@ public class Tile extends Rectangle {
     public Tile(int x, int y){
         point.x = x;
         point.y = y;
-        this.setWidth(App.TILE_SIZE);
-        this.setHeight(App.TILE_SIZE);
-        this.relocate(x * App.TILE_SIZE, y * App.TILE_SIZE + App.BOARD_Y_OFFSET);
+        this.setWidth(TapatanGame.TILE_SIZE);
+        this.setHeight(TapatanGame.TILE_SIZE);
+        this.relocate(x * TapatanGame.TILE_SIZE, y * TapatanGame.TILE_SIZE + TapatanGame.BOARD_Y_OFFSET);
         this.setFill(Color.TRANSPARENT);
         this.setStroke(Color.rgb(255,255,255,0.5));
     }
