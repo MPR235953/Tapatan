@@ -8,12 +8,12 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 
-//TODO: skalowanie okna
 
 public class GameController {
     @FXML private AnchorPane root;
     @FXML private ImageView map;
     @FXML private ImageView pane;
+    @FXML private Label playerNr;
 
     @FXML
     public void initialize(){
@@ -21,15 +21,9 @@ public class GameController {
         pane.setImage(new Image(new File("src/main/resources/app/tapatan/arts/pane.png").toURI().toString()));
         root.getChildren().add(TapatanGame.board);
         root.getChildren().add(TapatanGame.testPlayer.checkers);
-
-//        ImageView img = new ImageView();
-//        img.setImage(new Image("file:src/main/resources/app/tapatan/arts/fire_charmander_200.png"));
     }
 
-    @FXML private Label playerNr;
-
-    @FXML
-    protected void nextTurn() {
+    @FXML protected void nextTurn() {
         playerNr.setText("2");
     }
 }

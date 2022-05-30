@@ -6,12 +6,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Checker extends ImageView {
-
     public double mouseX, mouseY;
     public double oldX, oldY;
 
     public Checker(Image img, int x, int y) {
-
         move(x,y);
         this.setImage(img);
 
@@ -22,9 +20,7 @@ public class Checker extends ImageView {
             System.out.println("Mouse X, Y: " + mouseX + " " + mouseY);
         });
 
-        this.setOnMouseDragged( e -> {
-            relocate(e.getSceneX() - 100, e.getSceneY() - 100);
-        });
+        this.setOnMouseDragged( e -> relocate(e.getSceneX() - 100, e.getSceneY() - 100));
     }
 
     public void move(int x, int y) {
@@ -32,6 +28,7 @@ public class Checker extends ImageView {
         oldY = y * TapatanGame.TILE_SIZE + TapatanGame.BOARD_Y_OFFSET;
         relocate(oldX, oldY);
     }
+
     public void abortMove() {
         relocate(oldX, oldY);
     }
