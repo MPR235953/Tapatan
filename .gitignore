@@ -1,6 +1,9 @@
 /target/
 /idea/
 
+# Configuration file
+!.idea/runConfigurations/Run.xml
+
 # Compiled class file
 *.class
 
