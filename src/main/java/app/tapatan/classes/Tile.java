@@ -29,4 +29,6 @@ public class Tile extends Rectangle {
     boolean isEmpty(Point p) {
         return TileTable[p.x][p.y].tileType == TILE_EMPTY;
     }
+
+    boolean isEmpty(){ return this.tileType == TILE_EMPTY; }
 }
