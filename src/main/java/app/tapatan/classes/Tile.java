@@ -22,7 +22,7 @@ public class Tile extends Rectangle {
         point.y = y;
         this.setWidth(TapatanGame.TILE_SIZE);
         this.setHeight(TapatanGame.TILE_SIZE);
-        this.relocate(x * TapatanGame.TILE_SIZE, y * TapatanGame.TILE_SIZE + TapatanGame.BOARD_Y_OFFSET);
+        this.relocate(x * TapatanGame.TILE_SIZE, y * TapatanGame.TILE_SIZE);
         this.setFill(Color.TRANSPARENT);
         this.setStroke(Color.WHITE);
 

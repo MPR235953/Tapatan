@@ -23,7 +23,7 @@ public class GameController {
         staticBoardPane = boardPane;
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
         pane.setImage(new Image(new File("src/main/resources/app/tapatan/arts/pane.png").toURI().toString()));
-        root.getChildren().add(TapatanGame.board);
+        boardPane.getChildren().add(TapatanGame.board);
         //root.getChildren().add(TapatanGame.testPlayer.checkers);
     }
 
