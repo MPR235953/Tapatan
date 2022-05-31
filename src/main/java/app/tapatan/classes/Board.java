@@ -17,6 +17,7 @@ public class Board extends Group {
         }
     }
 
+    /** Do debuggowania, pokazuje aktualny stan planszy */
     public static void showBoardTypes(){
         for (int x = 0; x < BOARD_WIDTH; x++){
             for (int y = 0; y < BOARD_HEIGHT; y++){
@@ -32,6 +33,7 @@ public class Board extends Group {
         System.out.println("");
     }
 
+    /** Zwraca true jesli mamy wyjscie poza mape/tablice */
     public static boolean isOutOfBound(Point p){
         return p.x >= BOARD_WIDTH || p.x < 0 || p.y >= BOARD_HEIGHT || p.y < 0;
     }

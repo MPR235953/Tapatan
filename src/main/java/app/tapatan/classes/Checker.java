@@ -34,26 +34,36 @@ public class Checker extends ImageView {
         });
     }
 
+    /** zwraca true jeżeli:
+     1. przesunięcie pionka jest na mapie
+     2. pole jest puste
+     3. przesuwamy sie o jedno pole
+     4. aktualna tura to umozliwia */
     boolean moveOK(){
+        ///TODO: Nalezy dodac jeszcze jeden warunek aby ruch nie byl mozliwy jezeli jest runda 1 (tylko ustawianie pionkow na mapie)
         return !Board.isOutOfBound(releasedPoint) && Board.tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleJump();
     }
 
+    /** zwraca true jesli pionek przesunie sie o 2 pola */
     boolean isDoubleJump(){
         return Math.abs(pressedPoint.x - releasedPoint.x) == 2 || Math.abs(pressedPoint.y - releasedPoint.y) == 2;
     }
 
+    /** Umieszcza pionek na pozycji po zdarzeniu "Upuszczenia" */
     void setReleasedPosition(TileType tileType, Color color){
         relocate(releasedPoint.x * TapatanGame.TILE_SIZE, releasedPoint.y * TapatanGame.TILE_SIZE);
         Board.tileTable[releasedPoint.x][releasedPoint.y].tileType = tileType;
         Board.tileTable[releasedPoint.x][releasedPoint.y].setStroke(color);
     }
 
+    /** Umieszcza pionek na pozycji po zdarzeniu "Wcisnięcia" */
     void setPressedPosition(TileType tileType, Color color){
         relocate(pressedPoint.x * TapatanGame.TILE_SIZE, pressedPoint.y * TapatanGame.TILE_SIZE);
         Board.tileTable[pressedPoint.x][pressedPoint.y].tileType = tileType;
         Board.tileTable[pressedPoint.x][pressedPoint.y].setStroke(color);
     }
 
+    /** Do debbugowania, pokazuje powstawowe informacje o pionku i zdarzeniu*/
     void showCheckerInfo(String event, double x, double y){
         System.out.println(event);
         System.out.println("Checker: " + this);

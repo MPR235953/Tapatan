@@ -26,15 +26,19 @@ public class Tile extends Rectangle {
         this.setFill(Color.TRANSPARENT);
         this.setStroke(Color.WHITE);
 
+        /** utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow */
         this.setOnMouseClicked(e ->{
             if(this.tileType == TILE_EMPTY){
+                ///TODO: dodac warunek/funkcje sprawdzajaca czy gracz moze jeszcze postawic pionki tj. moze max 3
+                ///TODO: podczas tury 2 nalezy zablokowac mozliwosc stawiania pionkow
                 this.tileType = TileType.TILE_IN_USE;
+                //grafiki w zaleznosci od gracza
                 int randomIndex = new Random().nextInt(GraphicLinkArray.FireImages.size());
                 Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImages.get(randomIndex)).toURI().toString());
-                GraphicLinkArray.FireImages.remove(randomIndex);
-                this.setStroke(Color.ORANGE);
+                GraphicLinkArray.FireImages.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
+                this.setStroke(Color.ORANGE);       //kolor w zaleznosci od gracza
                 Checker checker = new Checker(image, x, y);
-                GameController.staticBoardPane.getChildren().add(checker);
+                GameController.staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
             }
         });
     }
@@ -47,5 +51,6 @@ public class Tile extends Rectangle {
         return tileTable[p.x][p.y].tileType == TILE_EMPTY;
     }
 
+    /** sprawdza czy na kafelku nie ma pionka (bezparametrowa) */
     boolean isEmpty(){ return this.tileType == TILE_EMPTY; }
 }
