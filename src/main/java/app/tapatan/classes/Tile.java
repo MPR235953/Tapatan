@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import java.util.Random;
 
-import static app.tapatan.classes.Board.TileTable;
+import static app.tapatan.classes.Board.tileTable;
 import static app.tapatan.classes.TileType.TILE_EMPTY;
 
 
@@ -44,7 +44,7 @@ public class Tile extends Rectangle {
     }
 
     boolean isEmpty(Point p) {
-        return TileTable[p.x][p.y].tileType == TILE_EMPTY;
+        return tileTable[p.x][p.y].tileType == TILE_EMPTY;
     }
 
     boolean isEmpty(){ return this.tileType == TILE_EMPTY; }
