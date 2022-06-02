@@ -29,7 +29,7 @@ public class Tile extends Rectangle {
         /** utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow */
         this.setOnMouseClicked(e ->{
             if(this.tileType == TILE_EMPTY){
-                ///TODO: dodac warunek/funkcje sprawdzajaca czy gracz moze jeszcze postawic pionki tj. moze max 3
+                ///TODO: dodac warunek/funkcje sprawdzajaca czy gracz moze jeszcze postawic pionki tj. moze max 3 (np poprzez jakis licznik lub przejsciu przez mape i zliczajca TileType aktualnego gracza)
                 ///TODO: podczas tury 2 nalezy zablokowac mozliwosc stawiania pionkow
                 this.tileType = TileType.TILE_IN_USE;
                 //grafiki w zaleznosci od gracza
@@ -39,6 +39,8 @@ public class Tile extends Rectangle {
                 this.setStroke(Color.ORANGE);       //kolor w zaleznosci od gracza
                 Checker checker = new Checker(image, x, y);
                 GameController.staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
+
+                checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
             }
         });
     }

@@ -19,28 +19,37 @@ public class Checker extends ImageView {
             setCursor(Cursor.MOVE);
             pressedPoint.x = (int)(e.getSceneX() / TapatanGame.TILE_SIZE);
             pressedPoint.y = (int)((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
-            setPressedPosition(TileType.TILE_EMPTY, Color.WHITE);
+            if(pressedOK()) setPressedPosition(TileType.TILE_EMPTY, Color.WHITE);
             showCheckerInfo("Pressed", e.getSceneX(), e.getSceneY());
         });
 
-        this.setOnMouseDragged( e -> relocate(e.getSceneX() - this.getImage().getWidth() / 2, e.getSceneY() - this.getImage().getHeight()));
+        this.setOnMouseDragged( e -> {
+            if(pressedOK()) relocate(e.getSceneX() - this.getImage().getWidth() / 2, e.getSceneY() - this.getImage().getHeight());
+        });
 
         this.setOnMouseReleased(e ->{
             releasedPoint.x = (int)(e.getSceneX() / TapatanGame.TILE_SIZE);
             releasedPoint.y = (int)((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
-            if(moveOK()) setReleasedPosition(TileType.TILE_IN_USE, Color.RED);
+            if(pressedOK() && releasedOK()) setReleasedPosition(TileType.TILE_IN_USE, Color.RED);
             else setPressedPosition(TileType.TILE_IN_USE, Color.RED);
             showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
         });
     }
 
     /** zwraca true jeżeli:
+     1. aktualna tura to umozliwia
+     2. aktualny gracz porusza swoim pionkiem*/
+    boolean pressedOK(){
+        ///TODO: Nalezy dodac jeszcze warunek aby ruch nie byl mozliwy jezeli jest runda 1 (tylko ustawianie pionkow na mapie)
+        ///TODO: Nalezy dodac kolejny warunek tj. gracz nie moze wykonac ruchu nieswoim pionkiem, najlepiej poprzez: Board.tileTable[pressedPoint.x][pressedPoint.y].tileType = TILE_IN_USE_X;
+        return true;
+    }
+
+    /** zwraca true jeżeli:
      1. przesunięcie pionka jest na mapie
      2. pole jest puste
-     3. przesuwamy sie o jedno pole
-     4. aktualna tura to umozliwia */
-    boolean moveOK(){
-        ///TODO: Nalezy dodac jeszcze jeden warunek aby ruch nie byl mozliwy jezeli jest runda 1 (tylko ustawianie pionkow na mapie)
+     3. przesuwamy sie o jedno pole */
+    boolean releasedOK(){
         return !Board.isOutOfBound(releasedPoint) && Board.tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleJump();
     }
 
@@ -67,8 +76,8 @@ public class Checker extends ImageView {
     void showCheckerInfo(String event, double x, double y){
         System.out.println(event);
         System.out.println("Checker: " + this);
-        System.out.println("Checker cords: (" + x + "," + (y - TapatanGame.BOARD_Y_OFFSET) + ")");
-        System.out.println("Mouse cords: (" + this.getLayoutX() + "," + this.getLayoutY() + ")");
+        System.out.println("Checker cords: (" + this.getLayoutX() + "," + this.getLayoutY() + ")");
+        System.out.println("Mouse cords: (" + x + "," + (y - TapatanGame.BOARD_Y_OFFSET) + ")");
         System.out.print("Indexes: ");
         if(event.equals("Pressed")) pressedPoint.showPoint();
         else if(event.equals("Released")) releasedPoint.showPoint();
