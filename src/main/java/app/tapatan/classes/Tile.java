@@ -31,9 +31,10 @@ public class Tile extends Rectangle {
             if(this.tileType == TILE_EMPTY){
                 ///TODO: dodac warunek/funkcje sprawdzajaca czy gracz moze jeszcze postawic pionki tj. moze max 3 (np poprzez jakis licznik lub przejsciu przez mape i zliczajca TileType aktualnego gracza)
                 ///TODO: podczas tury 2 nalezy zablokowac mozliwosc stawiania pionkow
+                ///TODO: uzaleznic pojawianie sie pionkow od aktualnego gracza (team water i fire)
                 this.tileType = TileType.TILE_IN_USE;
-                //grafiki w zaleznosci od gracza
                 int randomIndex = new Random().nextInt(GraphicLinkArray.FireImages.size());
+                //sa 2 arraye z grafikami w GraphicLinkArray dla teamu fire i water w zaleznosci od gracza
                 Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImages.get(randomIndex)).toURI().toString());
                 GraphicLinkArray.FireImages.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
                 this.setStroke(Color.ORANGE);       //kolor w zaleznosci od gracza
