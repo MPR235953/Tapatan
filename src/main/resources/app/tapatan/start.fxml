@@ -8,18 +8,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.tapatan.GameController">
    <children>
-      <ImageView fx:id="map" fitHeight="600.0" fitWidth="600.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
-         <effect>
-            <DropShadow />
-         </effect>
-         <image>
-            <Image url="@arts/map_600.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="pane" fitHeight="115.0" fitWidth="600.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@arts/pane.png" />
@@ -58,5 +51,17 @@
             <Font name="Rubik-Bold" size="48.0" />
          </font>
       </Label>
+      <Pane fx:id="boardPane" layoutY="110.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: pink;">
+         <children>
+            <ImageView fx:id="map" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@arts/map_600.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
