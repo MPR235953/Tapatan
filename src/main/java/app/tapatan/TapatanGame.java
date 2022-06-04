@@ -1,6 +1,7 @@
 package app.tapatan;
 
 import app.tapatan.classes.Board;
+import app.tapatan.classes.GameLoop;
 import app.tapatan.classes.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,13 +22,15 @@ public class TapatanGame extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(TapatanGame.class.getResource("start.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 710);
-
+        GameLoop gameLoop = new GameLoop();
         Image icon = new Image(new File("src/main/resources/app/tapatan/arts/fire_tepig_200.png").toURI().toString());
         stage.getIcons().add(icon);
         stage.setTitle("Tapatan");
 
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     public static void main(String[] args) {

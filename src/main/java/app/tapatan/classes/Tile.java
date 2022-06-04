@@ -10,7 +10,9 @@ import java.io.File;
 import java.util.Random;
 
 import static app.tapatan.classes.Board.tileTable;
+import static app.tapatan.classes.GameLoop.*;
 import static app.tapatan.classes.TileType.TILE_EMPTY;
+import static app.tapatan.classes.TileType.TILE_IN_USE_PLAYER_1;
 
 
 public class Tile extends Rectangle {
@@ -28,20 +30,34 @@ public class Tile extends Rectangle {
 
         /** utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow */
         this.setOnMouseClicked(e ->{
-            if(this.tileType == TILE_EMPTY){
-                ///TODO: dodac warunek/funkcje sprawdzajaca czy gracz moze jeszcze postawic pionki tj. moze max 3 (np poprzez jakis licznik lub przejsciu przez mape i zliczajca TileType aktualnego gracza)
-                ///TODO: podczas tury 2 nalezy zablokowac mozliwosc stawiania pionkow
-                ///TODO: uzaleznic pojawianie sie pionkow od aktualnego gracza (team water i fire)
-                this.tileType = TileType.TILE_IN_USE;
-                int randomIndex = new Random().nextInt(GraphicLinkArray.FireImages.size());
-                //sa 2 arraye z grafikami w GraphicLinkArray dla teamu fire i water w zaleznosci od gracza
-                Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImages.get(randomIndex)).toURI().toString());
-                GraphicLinkArray.FireImages.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
-                this.setStroke(Color.ORANGE);       //kolor w zaleznosci od gracza
-                Checker checker = new Checker(image, x, y);
-                GameController.staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
+            if(!phase1Complete) {
+                if (this.tileType == TILE_EMPTY) {
+                    this.tileType = players[actualPlayerNumber].tileusage;
 
-                checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
+                    if (actualPlayerNumber == 0) {
+                        int randomIndex = new Random().nextInt(GraphicLinkArray.FireImages.size());
+                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImages.get(randomIndex)).toURI().toString());
+                        GraphicLinkArray.FireImages.remove(randomIndex);
+                        this.setStroke(Color.ORANGE);
+                        Checker checker = new Checker(image, x, y);
+                        GameController.staticBoardPane.getChildren().add(checker);
+                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
+                    } else {
+                        int randomIndex = new Random().nextInt(GraphicLinkArray.WaterImages.size());
+                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.WaterImages.get(randomIndex)).toURI().toString());
+
+                        GraphicLinkArray.WaterImages.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
+                        this.setStroke(Color.ORANGE);       //kolor w zaleznosci od gracza
+                        Checker checker = new Checker(image, x, y);
+                        GameController.staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
+
+                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
+                    }
+                    actualPlayerNumber = (actualPlayerNumber + 1) % 2;
+                    if (GraphicLinkArray.FireImages.size() == 0 && GraphicLinkArray.WaterImages.size() == 0)
+                        phase1Complete = true;
+
+                }
             }
         });
     }

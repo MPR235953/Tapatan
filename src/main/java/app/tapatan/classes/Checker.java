@@ -6,6 +6,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import static app.tapatan.GameController.playerNr;
+import static app.tapatan.classes.Board.tileTable;
+import static app.tapatan.classes.GameLoop.*;
+
 public class Checker extends ImageView {
     private final Point pressedPoint = new Point();
     private final Point releasedPoint = new Point();
@@ -16,23 +20,50 @@ public class Checker extends ImageView {
         this.relocate(x * TapatanGame.TILE_SIZE, y * TapatanGame.TILE_SIZE);
 
         this.setOnMousePressed( e -> {
+            if (phase1Complete){
             setCursor(Cursor.MOVE);
-            pressedPoint.x = (int)(e.getSceneX() / TapatanGame.TILE_SIZE);
-            pressedPoint.y = (int)((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
-            if(pressedOK()) setPressedPosition(TileType.TILE_EMPTY, Color.WHITE);
-            showCheckerInfo("Pressed", e.getSceneX(), e.getSceneY());
+            pressedPoint.x = (int) (e.getSceneX() / TapatanGame.TILE_SIZE);
+            pressedPoint.y = (int) ((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
+
+                if (tileTable[pressedPoint.x][pressedPoint.y].tileType == players[actualPlayerNumber].tileusage) {
+
+                    if (pressedOK()) setPressedPosition(TileType.TILE_EMPTY, Color.WHITE);
+                    showCheckerInfo("Pressed", e.getSceneX(), e.getSceneY());
+                    fieldClickControl=false;
+                }
+                else{
+                    fieldClickControl=true;
+                }
+            }
         });
 
         this.setOnMouseDragged( e -> {
-            if(pressedOK()) relocate(e.getSceneX() - this.getImage().getWidth() / 2, e.getSceneY() - this.getImage().getHeight());
+            if (!fieldClickControl){
+                if (pressedOK())
+                    relocate(e.getSceneX() - this.getImage().getWidth() / 2, e.getSceneY() - this.getImage().getHeight());
+            }
         });
 
-        this.setOnMouseReleased(e ->{
-            releasedPoint.x = (int)(e.getSceneX() / TapatanGame.TILE_SIZE);
-            releasedPoint.y = (int)((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
-            if(pressedOK() && releasedOK()) setReleasedPosition(TileType.TILE_IN_USE, Color.RED);
-            else setPressedPosition(TileType.TILE_IN_USE, Color.RED);
-            showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
+        this.setOnMouseReleased(e -> {
+            if (!fieldClickControl) {
+                releasedPoint.x = (int) (e.getSceneX() / TapatanGame.TILE_SIZE);
+                releasedPoint.y = (int) ((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
+                if (phase1Complete) {
+                    if (pressedOK() && releasedOK()) {
+                        setReleasedPosition(players[actualPlayerNumber].tileusage, players[actualPlayerNumber].color);
+                        winCheck();
+
+                        ///TODO Miejsce na zrobienie okienka pokazującego wygraną danego gracza
+                        if (winConditionsFullfill) {
+
+                        }
+                        //
+                        actualPlayerNumber = (actualPlayerNumber + 1) % 2;
+                        playerNr.setText(String.valueOf(actualPlayerNumber+1));
+                    } else setPressedPosition(players[actualPlayerNumber].tileusage, players[actualPlayerNumber].color);
+                    showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
+                }
+            }
         });
     }
 
@@ -40,8 +71,8 @@ public class Checker extends ImageView {
      1. aktualna tura to umozliwia
      2. aktualny gracz porusza swoim pionkiem*/
     boolean pressedOK(){
-        ///TODO: Nalezy dodac jeszcze warunek aby ruch nie byl mozliwy jezeli jest runda 1 (tylko ustawianie pionkow na mapie)
-        ///TODO: Nalezy dodac kolejny warunek tj. gracz nie moze wykonac ruchu nieswoim pionkiem, najlepiej poprzez: Board.tileTable[pressedPoint.x][pressedPoint.y].tileType = TILE_IN_USE_X;
+     if (!phase1Complete || winConditionsFullfill)
+                    return false;
         return true;
     }
 
@@ -50,7 +81,7 @@ public class Checker extends ImageView {
      2. pole jest puste
      3. przesuwamy sie o jedno pole */
     boolean releasedOK(){
-        return !Board.isOutOfBound(releasedPoint) && Board.tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleJump();
+        return !Board.isOutOfBound(releasedPoint) && tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleJump();
     }
 
     /** zwraca true jesli pionek przesunie sie o 2 pola */
@@ -58,18 +89,20 @@ public class Checker extends ImageView {
         return Math.abs(pressedPoint.x - releasedPoint.x) == 2 || Math.abs(pressedPoint.y - releasedPoint.y) == 2;
     }
 
+
+
     /** Umieszcza pionek na pozycji po zdarzeniu "Upuszczenia" */
     void setReleasedPosition(TileType tileType, Color color){
         relocate(releasedPoint.x * TapatanGame.TILE_SIZE, releasedPoint.y * TapatanGame.TILE_SIZE);
-        Board.tileTable[releasedPoint.x][releasedPoint.y].tileType = tileType;
-        Board.tileTable[releasedPoint.x][releasedPoint.y].setStroke(color);
+        tileTable[releasedPoint.x][releasedPoint.y].tileType = tileType;
+        tileTable[releasedPoint.x][releasedPoint.y].setStroke(color);
     }
 
     /** Umieszcza pionek na pozycji po zdarzeniu "Wcisnięcia" */
     void setPressedPosition(TileType tileType, Color color){
         relocate(pressedPoint.x * TapatanGame.TILE_SIZE, pressedPoint.y * TapatanGame.TILE_SIZE);
-        Board.tileTable[pressedPoint.x][pressedPoint.y].tileType = tileType;
-        Board.tileTable[pressedPoint.x][pressedPoint.y].setStroke(color);
+        tileTable[pressedPoint.x][pressedPoint.y].tileType = tileType;
+        tileTable[pressedPoint.x][pressedPoint.y].setStroke(color);
     }
 
     /** Do debbugowania, pokazuje powstawowe informacje o pionku i zdarzeniu*/
