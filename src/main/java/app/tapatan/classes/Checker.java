@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-import static app.tapatan.GameController.playerNr;
+import static app.tapatan.GameController.staticPlayerNr;
 import static app.tapatan.classes.Board.tileTable;
 import static app.tapatan.classes.GameLoop.*;
 
@@ -59,7 +59,7 @@ public class Checker extends ImageView {
                         }
                         //
                         actualPlayerNumber = (actualPlayerNumber + 1) % 2;
-                        playerNr.setText(String.valueOf(actualPlayerNumber+1));
+                        staticPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
                     } else setPressedPosition(players[actualPlayerNumber].tileusage, players[actualPlayerNumber].color);
                     showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
                 }
