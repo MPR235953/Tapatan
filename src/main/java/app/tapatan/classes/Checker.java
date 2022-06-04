@@ -82,7 +82,7 @@ public class Checker extends ImageView {
      3. przesuwamy sie o jedno pole
      4. przesunięcie na skos jest zgodne ze ścieżkami na mapie*/
     boolean releasedOK(){
-        return !Board.isOutOfBound(releasedPoint) && tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleMove() && !isIllegalCrossMove();
+        return !Board.isOutOfBound(releasedPoint) && tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleMove() && !isIllegalCrossMove() && !isNoMove();
     }
 
     /** zwraca true jesli pionek przesunie sie o 2 pola */
@@ -93,6 +93,10 @@ public class Checker extends ImageView {
     /** zwraca true jesli pionek wykonuje ruch na skos niezgodznie ze sciezkami na mapie */
     boolean isIllegalCrossMove(){
         return (pressedPoint.x == 0 && pressedPoint.y == 1 || pressedPoint.x == 1 && pressedPoint.y == 0 || pressedPoint.x == 1 && pressedPoint.y == 2 || pressedPoint.x == 2 && pressedPoint.y == 1) && Math.abs(pressedPoint.x - releasedPoint.x) == 1 && Math.abs(pressedPoint.y - releasedPoint.y) == 1;
+    }
+
+    boolean isNoMove(){
+        return pressedPoint.x == releasedPoint.x && pressedPoint.y == releasedPoint.y;
     }
 
     /** Umieszcza pionek na pozycji po zdarzeniu "Upuszczenia" */
