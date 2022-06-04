@@ -14,7 +14,7 @@ public class GameController {
     @FXML private AnchorPane root;
     @FXML private ImageView map;
     @FXML private ImageView pane;
-    @FXML private Label playerNr;
+    @FXML public static Label playerNr = new Label();
     @FXML private Pane boardPane;
     public static Pane staticBoardPane;
 
@@ -30,4 +30,7 @@ public class GameController {
     @FXML protected void nextTurn() {
         playerNr.setText("2");
     }
+
+
+
 }
