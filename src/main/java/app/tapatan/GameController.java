@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 
@@ -29,6 +30,7 @@ public class GameController {
     public void initialize(){
         staticBoardPane = boardPane;
         staticTurnPlayerNr = turnPlayerNr;
+        staticTurnPlayerNr.setTextFill(Color.RED);
         staticGameEndPane = gameEndPane;
         staticEndPlayerNr = endPlayerNr;
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
