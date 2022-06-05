@@ -5,13 +5,3 @@
 .button{
     -fx-effect: dropshadow(one-pass-box, black, 10, 0, 0, 0);
 }
-
-.button-reset{
-    -fx-shape: "M 50 300 L 200 300 C 450 300 417 200 200 200 L 200 100 L 55 175 L 200 250 L 200 150 C 500 159 500 350 200 350 L 50 350 Z";
-    -fx-background-color: #AA00FF;
-}
-
-.button-ok{
-    -fx-shape: "M 50 200 L 150 150 L 50 100 L 50 200 Z";
-    -fx-background-color: #76FF03;
-}

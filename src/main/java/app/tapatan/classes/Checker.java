@@ -55,7 +55,7 @@ public class Checker extends ImageView {
 
                         ///TODO Miejsce na zrobienie okienka pokazującego wygraną danego gracza
                         if (winConditionsFullfill) {
-
+                            //gameEndPaneAppear();
                         }
                         //
                         actualPlayerNumber = (actualPlayerNumber + 1) % 2;
