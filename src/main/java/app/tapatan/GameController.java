@@ -1,17 +1,23 @@
 package app.tapatan;
 
+import app.tapatan.classes.GraphicLinkArray;
+import app.tapatan.classes.TileType;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.File;
 
-import static app.tapatan.classes.GameLoop.actualPlayerNumber;
-import static app.tapatan.classes.GameLoop.players;
+import static app.tapatan.classes.Board.*;
+import static app.tapatan.classes.GameLoop.*;
 
 public class GameController {
     @FXML private AnchorPane root;
@@ -25,6 +31,8 @@ public class GameController {
     public static Pane staticGameEndPane;
     @FXML private Label endPlayerNr = new Label();
     public static Label staticEndPlayerNr;
+    @FXML private Button exitButton;
+    @FXML private Button restartButton;
 
     @FXML
     public void initialize(){
@@ -51,5 +59,40 @@ public class GameController {
         staticGameEndPane.setVisible(true);
     }
 
-    public void gameEndDisappear(){ gameEndPane.setVisible(false); }
+    static public void gameEndDisappear(){ staticGameEndPane.setVisible(false); }
+
+    public void closeGame(ActionEvent actionEvent) {
+        ((Stage)root.getScene().getWindow()).close();
+    }
+
+    public void gameRestart(ActionEvent actionEvent) {
+        changeTurnPlayerNr();
+        winConditionsFullfill = false;
+        phase1Complete = false;
+        fieldClickControl = false;
+
+        for (int x = 0; x < BOARD_WIDTH; x++) {
+            for (int y = 0; y < BOARD_HEIGHT; y++) {
+                tileTable[y][x].tileType = TileType.TILE_EMPTY;
+            }
+        }
+
+        staticBoardPane.getChildren().clear();
+        map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
+        boardPane.getChildren().add(map);
+        boardPane.getChildren().add(TapatanGame.board);
+
+        for(int i=0; i<3; i++){
+            if(!GraphicLinkArray.WaterImagesUsed.isEmpty()){
+                GraphicLinkArray.WaterImagesUnused.add(GraphicLinkArray.WaterImagesUsed.get(0));
+                GraphicLinkArray.WaterImagesUsed.remove(0);
+            }
+            if(!GraphicLinkArray.FireImagesUsed.isEmpty()){
+                GraphicLinkArray.FireImagesUnused.add(GraphicLinkArray.FireImagesUsed.get(0));
+                GraphicLinkArray.FireImagesUsed.remove(0);
+            }
+        }
+
+        gameEndDisappear();
+    }
 }

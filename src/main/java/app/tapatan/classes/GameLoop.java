@@ -2,8 +2,8 @@ package app.tapatan.classes;
 
 import javafx.scene.paint.Color;
 
-import static app.tapatan.classes.Board.BOARD_WIDTH;
-import static app.tapatan.classes.Board.tileTable;
+import static app.tapatan.GameController.gameEndDisappear;
+import static app.tapatan.classes.Board.*;
 
 /**
  * Glowna klasa posiadajaca kluczowe pola do implementacji i kontroli petli gry oraz ruchow gracza

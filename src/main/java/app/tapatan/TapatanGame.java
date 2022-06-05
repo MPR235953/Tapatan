@@ -29,8 +29,6 @@ public class TapatanGame extends Application {
 
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public static void main(String[] args) {

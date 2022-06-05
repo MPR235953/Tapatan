@@ -99,14 +99,12 @@ public class Checker extends ImageView {
     void setReleasedPosition(TileType tileType, Color color){
         relocate(releasedPoint.x * TapatanGame.TILE_SIZE, releasedPoint.y * TapatanGame.TILE_SIZE);
         tileTable[releasedPoint.x][releasedPoint.y].tileType = tileType;
-        tileTable[releasedPoint.x][releasedPoint.y].setStroke(color);
     }
 
     /** Umieszcza pionek na pozycji po zdarzeniu "Wcisnięcia" */
     void setPressedPosition(TileType tileType, Color color){
         relocate(pressedPoint.x * TapatanGame.TILE_SIZE, pressedPoint.y * TapatanGame.TILE_SIZE);
         tileTable[pressedPoint.x][pressedPoint.y].tileType = tileType;
-        tileTable[pressedPoint.x][pressedPoint.y].setStroke(color);
     }
 
     /** Do debbugowania, pokazuje powstawowe informacje o pionku i zdarzeniu*/

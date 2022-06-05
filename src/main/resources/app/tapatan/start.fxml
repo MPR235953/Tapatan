@@ -51,8 +51,14 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <Button layoutX="59.0" layoutY="91.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="78.0" text="Restart" />
-            <Button layoutX="208.0" layoutY="91.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="78.0" text="Wyjdź" />
+            <Button fx:id="restartButton" layoutX="39.0" layoutY="91.0" mnemonicParsing="false" onAction="#gameRestart" prefHeight="43.0" prefWidth="139.0" text="Zagraj jeszcze raz" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="exitButton" layoutX="222.0" layoutY="91.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="43.0" prefWidth="78.0" text="Wyjdź" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
             <Label fx:id="text1" layoutX="30.0" layoutY="34.0" prefHeight="43.0" prefWidth="295.0" text="Wygrał gracz     !" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Rubik-Bold" size="36.0" />

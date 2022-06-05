@@ -1,6 +1,5 @@
 package app.tapatan.classes;
 
-import app.tapatan.GameController;
 import app.tapatan.TapatanGame;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -26,7 +25,7 @@ public class Tile extends Rectangle {
         this.setHeight(TapatanGame.TILE_SIZE);
         this.relocate(x * TapatanGame.TILE_SIZE, y * TapatanGame.TILE_SIZE);
         this.setFill(Color.TRANSPARENT);
-        this.setStroke(Color.WHITE);
+        this.setStroke(Color.DARKGREEN);
 
         /** utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow */
         this.setOnMouseClicked(e ->{
@@ -35,22 +34,20 @@ public class Tile extends Rectangle {
                     this.tileType = players[actualPlayerNumber].tileusage;
 
                     if (actualPlayerNumber == 0) {
-                        int randomIndex = new Random().nextInt(GraphicLinkArray.FireImages.size());
-                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImages.get(randomIndex)).toURI().toString());
-                        GraphicLinkArray.FireImages.remove(randomIndex);
-                        this.setStroke(Color.ORANGE);
+                        int randomIndex = new Random().nextInt(GraphicLinkArray.FireImagesUnused.size());
+                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImagesUnused.get(randomIndex)).toURI().toString());
+                        GraphicLinkArray.FireImagesUsed.add(GraphicLinkArray.FireImagesUnused.get(randomIndex));
+                        GraphicLinkArray.FireImagesUnused.remove(randomIndex);
                         Checker checker = new Checker(image, x, y);
-                        GameController.staticBoardPane.getChildren().add(checker);
+                        staticBoardPane.getChildren().add(checker);
                         checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     } else {
-                        int randomIndex = new Random().nextInt(GraphicLinkArray.WaterImages.size());
-                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.WaterImages.get(randomIndex)).toURI().toString());
-
-                        GraphicLinkArray.WaterImages.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
-                        this.setStroke(Color.ORANGE);       //kolor w zaleznosci od gracza
+                        int randomIndex = new Random().nextInt(GraphicLinkArray.WaterImagesUnused.size());
+                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.WaterImagesUnused.get(randomIndex)).toURI().toString());
+                        GraphicLinkArray.WaterImagesUsed.add(GraphicLinkArray.WaterImagesUnused.get(randomIndex));
+                        GraphicLinkArray.WaterImagesUnused.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
                         Checker checker = new Checker(image, x, y);
-                        GameController.staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
-
+                        staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
                         checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     }
                     winCheck();
@@ -58,7 +55,7 @@ public class Tile extends Rectangle {
                         gameEndAppear();
                     else
                         changeTurnPlayerNr();
-                    if (GraphicLinkArray.FireImages.size() == 0 && GraphicLinkArray.WaterImages.size() == 0)
+                    if (GraphicLinkArray.FireImagesUnused.size() == 0 && GraphicLinkArray.WaterImagesUnused.size() == 0)
                         phase1Complete = true;
 
                 }
