@@ -4,8 +4,6 @@ import app.tapatan.classes.GraphicLinkArray;
 import app.tapatan.classes.TileType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,8 +29,6 @@ public class GameController {
     public static Pane staticGameEndPane;
     @FXML private Label endPlayerNr = new Label();
     public static Label staticEndPlayerNr;
-    @FXML private Button exitButton;
-    @FXML private Button restartButton;
 
     @FXML
     public void initialize(){
@@ -44,7 +40,6 @@ public class GameController {
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
         pane.setImage(new Image(new File("src/main/resources/app/tapatan/arts/pane.png").toURI().toString()));
         boardPane.getChildren().add(TapatanGame.board);
-        //root.getChildren().add(TapatanGame.testPlayer.checkers);
     }
 
     static public void changeTurnPlayerNr(){
@@ -69,7 +64,6 @@ public class GameController {
         changeTurnPlayerNr();
         winConditionsFullfill = false;
         phase1Complete = false;
-        fieldClickControl = false;
 
         for (int x = 0; x < BOARD_WIDTH; x++) {
             for (int y = 0; y < BOARD_HEIGHT; y++) {

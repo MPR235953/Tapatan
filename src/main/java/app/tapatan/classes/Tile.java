@@ -9,7 +9,6 @@ import java.io.File;
 import java.util.Random;
 
 import static app.tapatan.GameController.*;
-import static app.tapatan.classes.Board.tileTable;
 import static app.tapatan.classes.GameLoop.*;
 import static app.tapatan.classes.TileType.TILE_EMPTY;
 
@@ -25,9 +24,9 @@ public class Tile extends Rectangle {
         this.setHeight(TapatanGame.TILE_SIZE);
         this.relocate(x * TapatanGame.TILE_SIZE, y * TapatanGame.TILE_SIZE);
         this.setFill(Color.TRANSPARENT);
-        this.setStroke(Color.DARKGREEN);
+        this.setStroke(Color.WHITE);
 
-        /** utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow */
+        //utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow
         this.setOnMouseClicked(e ->{
             if(!phase1Complete) {
                 if (this.tileType == TILE_EMPTY) {
@@ -38,6 +37,7 @@ public class Tile extends Rectangle {
                         Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImagesUnused.get(randomIndex)).toURI().toString());
                         GraphicLinkArray.FireImagesUsed.add(GraphicLinkArray.FireImagesUnused.get(randomIndex));
                         GraphicLinkArray.FireImagesUnused.remove(randomIndex);
+
                         Checker checker = new Checker(image, x, y);
                         staticBoardPane.getChildren().add(checker);
                         checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
@@ -46,6 +46,7 @@ public class Tile extends Rectangle {
                         Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.WaterImagesUnused.get(randomIndex)).toURI().toString());
                         GraphicLinkArray.WaterImagesUsed.add(GraphicLinkArray.WaterImagesUnused.get(randomIndex));
                         GraphicLinkArray.WaterImagesUnused.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
+
                         Checker checker = new Checker(image, x, y);
                         staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
                         checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
@@ -55,20 +56,11 @@ public class Tile extends Rectangle {
                         gameEndAppear();
                     else
                         changeTurnPlayerNr();
-                    if (GraphicLinkArray.FireImagesUnused.size() == 0 && GraphicLinkArray.WaterImagesUnused.size() == 0)
+                    if (GraphicLinkArray.FireImagesUnused.isEmpty() && GraphicLinkArray.WaterImagesUnused.isEmpty())
                         phase1Complete = true;
-
                 }
             }
         });
-    }
-
-    public void setTileType(TileType tileType) {
-        this.tileType = tileType;
-    }
-
-    boolean isEmpty(Point p) {
-        return tileTable[p.x][p.y].tileType == TILE_EMPTY;
     }
 
     /** sprawdza czy na kafelku nie ma pionka (bezparametrowa) */

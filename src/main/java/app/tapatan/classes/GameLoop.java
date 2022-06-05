@@ -2,22 +2,19 @@ package app.tapatan.classes;
 
 import javafx.scene.paint.Color;
 
-import static app.tapatan.GameController.gameEndDisappear;
 import static app.tapatan.classes.Board.*;
 
 /**
  * Glowna klasa posiadajaca kluczowe pola do implementacji i kontroli petli gry oraz ruchow gracza
- *
  */
 
 public class GameLoop {
-    public static Player[] players =
-                                    {
+    public static Player[] players = {
                                         new Player(),
                                         new Player()
-                                    };
+                                     };
     public static int actualPlayerNumber = 0;
-    public static boolean  winConditionsFullfill =false;
+    public static boolean  winConditionsFullfill = false;
     public static boolean  phase1Complete = false;
     //ważne ustawia flagę która sprawdza czy kliknięty został dobry pionek
     public static boolean fieldClickControl = false;
@@ -33,34 +30,27 @@ public class GameLoop {
      * metoda sprawdzajaca warunki zwyciestwa aktualnego gracza
      */
     public static void winCheck(){
-        int row1=0,row2=0,row3=0;
-        int col1=0,col2=0,col3=0;
-        int rdiag=0,diag=0;
+        int[] check = new int[8];   // tablica przechowująca ilość pionków w {wiersz1, wiersz2, wiersz3, kolumna1, kolumna2, kolumna3, przekątna1, przekątna2}
 
-        for (int i=0;i<Board.BOARD_WIDTH;i++)
-        {
-            //sprawdzanie wierszy
-        //row1
-            if (tileTable[i][0].tileType == players[actualPlayerNumber].tileusage) row1++;
-        //row1
-            if (tileTable[i][1].tileType == players[actualPlayerNumber].tileusage) row2++;
-        //row1
-            if (tileTable[i][2].tileType == players[actualPlayerNumber].tileusage) row3++;
-            //sprawdzanie kolumn
-        //col1
-            if (tileTable[0][i].tileType == players[actualPlayerNumber].tileusage) col1++;
-        //col2
-            if (tileTable[1][i].tileType == players[actualPlayerNumber].tileusage) col2++;
-        //col3
-            if (tileTable[2][i].tileType == players[actualPlayerNumber].tileusage) col3++;
-            //sprawdzanie przekatnych
-        //rdiag
-            if (tileTable[i][i].tileType == players[actualPlayerNumber].tileusage) rdiag++;
-        //diag
-            if (tileTable[BOARD_WIDTH-i-1][i].tileType == players[actualPlayerNumber].tileusage) diag++;
+        for (int i = 0; i < Board.BOARD_WIDTH; i++) {
+            for (int j = 0; j < BOARD_HEIGHT; j++) {
+                //sprawdzanie wierszy
+                if (tileTable[i][j].tileType == players[actualPlayerNumber].tileusage) check[j]++;
+                //sprawdzanie kolumn
+                if (tileTable[j][i].tileType == players[actualPlayerNumber].tileusage) check[Board.BOARD_WIDTH + j]++;
+            }
+            //sprawdzanie przekątnych
+            if (tileTable[i][i].tileType == players[actualPlayerNumber].tileusage)
+                check[Board.BOARD_WIDTH + BOARD_HEIGHT]++;
+            if (tileTable[BOARD_WIDTH - i - 1][i].tileType == players[actualPlayerNumber].tileusage)
+                check[Board.BOARD_WIDTH + BOARD_HEIGHT + 1]++;
         }
-        if (col1 == 3 || col2 == 3 || col3 == 3 || row1 == 3 || row2 == 3 || row3 == 3 || diag == 3 || rdiag == 3)
-            winConditionsFullfill = true;
+
+        for (int i : check)
+            if (i == 3) {
+                winConditionsFullfill = true;
+                break;
+            }
     }
 
 }
