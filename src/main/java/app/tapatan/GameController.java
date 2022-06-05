@@ -65,9 +65,9 @@ public class GameController {
         winConditionsFullfill = false;
         phase1Complete = false;
 
-        for (int x = 0; x < BOARD_WIDTH; x++) {
-            for (int y = 0; y < BOARD_HEIGHT; y++) {
-                tileTable[y][x].tileType = TileType.TILE_EMPTY;
+        for (int x = 0; x < getBoardWidth(); x++) {
+            for (int y = 0; y < getBoardHeight(); y++) {
+                getTileTable()[y][x].tileType = TileType.TILE_EMPTY;
             }
         }
 

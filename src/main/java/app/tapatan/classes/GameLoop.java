@@ -19,8 +19,8 @@ public class GameLoop {
     //ważne ustawia flagę która sprawdza czy kliknięty został dobry pionek
     public static boolean fieldClickControl = false;
     public GameLoop(){
-        players[0].tileusage =TileType.TILE_IN_USE_PLAYER_1;
-        players[1].tileusage =TileType.TILE_IN_USE_PLAYER_2;
+        players[0].tileusage = TileType.TILE_IN_USE_PLAYER_1;
+        players[1].tileusage = TileType.TILE_IN_USE_PLAYER_2;
         players[0].color = Color.RED;
         players[1].color = Color.BLUE;
 
@@ -35,18 +35,18 @@ public class GameLoop {
         }
         int[] check = new int[8];   // tablica przechowująca ilość pionków w {wiersz1, wiersz2, wiersz3, kolumna1, kolumna2, kolumna3, przekątna1, przekątna2}
 
-        for (int i = 0; i < Board.BOARD_WIDTH; i++) {
-            for (int j = 0; j < BOARD_HEIGHT; j++) {
+        for (int i = 0; i < Board.getBoardWidth(); i++) {
+            for (int j = 0; j < getBoardHeight(); j++) {
                 //sprawdzanie wierszy
-                if (tileTable[i][j].tileType == players[actualPlayerNumber].tileusage) check[j]++;
+                if (getTileTable()[i][j].tileType == players[actualPlayerNumber].tileusage) check[j]++;
                 //sprawdzanie kolumn
-                if (tileTable[j][i].tileType == players[actualPlayerNumber].tileusage) check[Board.BOARD_WIDTH + j]++;
+                if (getTileTable()[j][i].tileType == players[actualPlayerNumber].tileusage) check[Board.getBoardWidth() + j]++;
             }
             //sprawdzanie przekątnych
-            if (tileTable[i][i].tileType == players[actualPlayerNumber].tileusage)
-                check[Board.BOARD_WIDTH + BOARD_HEIGHT]++;
-            if (tileTable[BOARD_WIDTH - i - 1][i].tileType == players[actualPlayerNumber].tileusage)
-                check[Board.BOARD_WIDTH + BOARD_HEIGHT + 1]++;
+            if (getTileTable()[i][i].tileType == players[actualPlayerNumber].tileusage)
+                check[Board.getBoardWidth() + getBoardHeight()]++;
+            if (getTileTable()[getBoardWidth() - i - 1][i].tileType == players[actualPlayerNumber].tileusage)
+                check[Board.getBoardWidth() + getBoardHeight() + 1]++;
         }
 
         for (int i : check)
