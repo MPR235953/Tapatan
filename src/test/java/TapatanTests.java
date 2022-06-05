@@ -1,5 +1,7 @@
-import app.tapatan.GameController;
-import app.tapatan.classes.*;
+import app.tapatan.classes.Board;
+import app.tapatan.classes.Point;
+import app.tapatan.classes.Tile;
+import app.tapatan.classes.TileType;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -43,10 +45,4 @@ public class TapatanTests {
         }
     }
 
-    @Test
-    public void testNotWin() {
-        GameLoop.winCheck();
-        Assert.assertFalse(GameLoop.winConditionsFullfill);
-
-    }
 }
