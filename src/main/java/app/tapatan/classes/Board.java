@@ -38,5 +38,4 @@ public class Board extends Group {
         return p.x >= BOARD_WIDTH || p.x < 0 || p.y >= BOARD_HEIGHT || p.y < 0;
     }
 
-    Tile getTileat(Point point){return tileTable[point.x][point.y];}
 }
