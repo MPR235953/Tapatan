@@ -58,7 +58,7 @@
                   <Font name="Rubik-Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="playerNr1" layoutX="272.0" layoutY="23.0" prefHeight="56.0" prefWidth="28.0" text="1" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="endPlayerNr" layoutX="272.0" layoutY="23.0" prefHeight="56.0" prefWidth="28.0" text="1" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Rubik-Bold" size="48.0" />
                </font>

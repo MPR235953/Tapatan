@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-import static app.tapatan.GameController.staticPlayerNr;
+import static app.tapatan.GameController.*;
 import static app.tapatan.classes.Board.tileTable;
 import static app.tapatan.classes.GameLoop.*;
 
@@ -52,14 +52,10 @@ public class Checker extends ImageView {
                     if (pressedOK() && releasedOK()) {
                         setReleasedPosition(players[actualPlayerNumber].tileusage, players[actualPlayerNumber].color);
                         winCheck();
-
-                        ///TODO Miejsce na zrobienie okienka pokazującego wygraną danego gracza
-                        if (winConditionsFullfill) {
-                            //gameEndPaneAppear();
-                        }
-                        //
-                        actualPlayerNumber = (actualPlayerNumber + 1) % 2;
-                        staticPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
+                        if (winConditionsFullfill)
+                            gameEndAppear();
+                        else
+                            changeTurnPlayerNr();
                     } else setPressedPosition(players[actualPlayerNumber].tileusage, players[actualPlayerNumber].color);
                     showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
                 }

@@ -9,11 +9,10 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import java.util.Random;
 
-import static app.tapatan.GameController.staticPlayerNr;
+import static app.tapatan.GameController.*;
 import static app.tapatan.classes.Board.tileTable;
 import static app.tapatan.classes.GameLoop.*;
 import static app.tapatan.classes.TileType.TILE_EMPTY;
-import static app.tapatan.classes.TileType.TILE_IN_USE_PLAYER_1;
 
 
 public class Tile extends Rectangle {
@@ -54,8 +53,11 @@ public class Tile extends Rectangle {
 
                         checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     }
-                    actualPlayerNumber = (actualPlayerNumber + 1) % 2;
-                    staticPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
+                    winCheck();
+                    if (winConditionsFullfill)
+                        gameEndAppear();
+                    else
+                        changeTurnPlayerNr();
                     if (GraphicLinkArray.FireImages.size() == 0 && GraphicLinkArray.WaterImages.size() == 0)
                         phase1Complete = true;
 
