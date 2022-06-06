@@ -5,7 +5,7 @@ import javafx.scene.Group;
 public class Board extends Group {
     private static final int BOARD_WIDTH = 3;
     private static final int BOARD_HEIGHT = 3;
-    static Tile[][] tileTable = new Tile[BOARD_HEIGHT][BOARD_WIDTH];
+    public static Tile[][] tileTable = new Tile[BOARD_HEIGHT][BOARD_WIDTH];
 
     public Board(){
         for (int x = 0; x < BOARD_WIDTH; x++){
