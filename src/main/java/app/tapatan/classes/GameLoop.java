@@ -30,9 +30,6 @@ public class GameLoop {
      * metoda sprawdzajaca warunki zwyciestwa aktualnego gracza
      */
     public static void winCheck(){
-        if(!phase1Complete) {
-            return;
-        }
         int[] check = new int[8];   // tablica przechowująca ilość pionków w {wiersz1, wiersz2, wiersz3, kolumna1, kolumna2, kolumna3, przekątna1, przekątna2}
 
         for (int i = 0; i < Board.getBoardWidth(); i++) {
