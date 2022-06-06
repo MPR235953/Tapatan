@@ -40,7 +40,7 @@ public class Tile extends Rectangle {
 
                         Checker checker = new Checker(image, x, y);
                         staticBoardPane.getChildren().add(checker);
-                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
+//                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     } else {
                         int randomIndex = new Random().nextInt(GraphicLinkArray.WaterImagesUnused.size());
                         Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.WaterImagesUnused.get(randomIndex)).toURI().toString());
@@ -49,7 +49,7 @@ public class Tile extends Rectangle {
 
                         Checker checker = new Checker(image, x, y);
                         staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
-                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
+//                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     }
                     winCheck();
                     if (winConditionsFullfill)

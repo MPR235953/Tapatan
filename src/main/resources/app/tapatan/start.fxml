@@ -19,12 +19,12 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <Label fx:id="text" layoutX="36.0" layoutY="33.0" prefHeight="43.0" prefWidth="279.0" text="Tura        gracza" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="634.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="33.0">
+      <Label fx:id="text" layoutX="36.0" layoutY="33.0" prefHeight="53.0" prefWidth="279.0" text="Tura      gracza" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="624.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="33.0">
          <font>
             <Font name="Rubik-Bold" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="turnPlayerNr" layoutX="138.0" layoutY="23.0" prefHeight="64.0" prefWidth="38.0" text="1" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="623.0" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="424.0" AnchorPane.topAnchor="23.0">
+      <Label fx:id="turnPlayerNr" layoutX="121.0" layoutY="23.0" prefHeight="64.0" prefWidth="38.0" text="1" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="623.0" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="441.0" AnchorPane.topAnchor="23.0">
          <font>
             <Font name="Rubik-Bold" size="48.0" />
          </font>
@@ -59,12 +59,12 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Label fx:id="text1" layoutX="30.0" layoutY="34.0" prefHeight="43.0" prefWidth="295.0" text="Wygrał gracz     !" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="text1" layoutX="30.0" layoutY="34.0" prefHeight="43.0" prefWidth="295.0" text="Wygrał gracz" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Rubik-Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="endPlayerNr" layoutX="272.0" layoutY="23.0" prefHeight="56.0" prefWidth="28.0" text="1" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="endPlayerNr" layoutX="249.0" layoutY="26.0" prefHeight="70.0" prefWidth="38.0" text="1" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Rubik-Bold" size="48.0" />
                </font>

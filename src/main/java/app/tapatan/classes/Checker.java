@@ -27,7 +27,7 @@ public class Checker extends ImageView {
                     if (tileTable[pressedPoint.x][pressedPoint.y].tileType == players[actualPlayerNumber].tileusage) {
                         if (pressedOK())
                             setPressedPosition(TileType.TILE_EMPTY);
-                        showCheckerInfo("Pressed", e.getSceneX(), e.getSceneY());
+//                        showCheckerInfo("Pressed", e.getSceneX(), e.getSceneY());
                         fieldClickControl = false;
                     }
                     else{
@@ -57,7 +57,7 @@ public class Checker extends ImageView {
                             changeTurnPlayerNr();
                     } else
                         setPressedPosition(players[actualPlayerNumber].tileusage);
-                    showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
+//                    showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
                 }
             }
         });
