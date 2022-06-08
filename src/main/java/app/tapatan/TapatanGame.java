@@ -22,6 +22,7 @@ public class TapatanGame extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(TapatanGame.class.getResource("start.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 710);
         GameLoop gameLoop = new GameLoop();
+        stage.setResizable(false);
         Image icon = new Image(new File("src/main/resources/app/tapatan/arts/fire_tepig_200.png").toURI().toString());
         stage.getIcons().add(icon);
         stage.setTitle("Tapatan");
