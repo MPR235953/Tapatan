@@ -37,10 +37,8 @@ public class Checker extends ImageView {
         });
 
         this.setOnMouseDragged( e -> {
-            if (!fieldClickControl){
-                if (pressedOK())
-                    relocate(e.getSceneX() - this.getImage().getWidth() / 2, e.getSceneY() - this.getImage().getHeight());
-            }
+            if (!fieldClickControl && pressedOK())
+                relocate(e.getSceneX() - this.getImage().getWidth() / 2, e.getSceneY() - this.getImage().getHeight());
         });
 
         this.setOnMouseReleased(e -> {
@@ -81,7 +79,12 @@ public class Checker extends ImageView {
 
     /** zwraca true jesli pionek wykonuje ruch na skos niezgodznie ze sciezkami na mapie */
     boolean isIllegalCrossMove(){
-        return (pressedPoint.x == 0 && pressedPoint.y == 1 || pressedPoint.x == 1 && pressedPoint.y == 0 || pressedPoint.x == 1 && pressedPoint.y == 2 || pressedPoint.x == 2 && pressedPoint.y == 1) && Math.abs(pressedPoint.x - releasedPoint.x) == 1 && Math.abs(pressedPoint.y - releasedPoint.y) == 1;
+        return (pressedPoint.x == 0 && pressedPoint.y == 1 ||
+                pressedPoint.x == 1 && pressedPoint.y == 0 ||
+                pressedPoint.x == 1 && pressedPoint.y == 2 ||
+                pressedPoint.x == 2 && pressedPoint.y == 1) &&
+                Math.abs(pressedPoint.x - releasedPoint.x) == 1 &&
+                Math.abs(pressedPoint.y - releasedPoint.y) == 1;
     }
 
     boolean isNoMove(){
