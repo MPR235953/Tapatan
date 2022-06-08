@@ -33,19 +33,19 @@ public class Tile extends Rectangle {
                     this.tileType = players[actualPlayerNumber].tileusage;
 
                     if (actualPlayerNumber == 0) {
-                        int randomIndex = new Random().nextInt(GraphicLinkArray.FireImagesUnused.size());
-                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.FireImagesUnused.get(randomIndex)).toURI().toString());
-                        GraphicLinkArray.FireImagesUsed.add(GraphicLinkArray.FireImagesUnused.get(randomIndex));
-                        GraphicLinkArray.FireImagesUnused.remove(randomIndex);
+                        int randomIndex = new Random().nextInt(GameLoop.FireImagesUnused.size());
+                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GameLoop.FireImagesUnused.get(randomIndex)).toURI().toString());
+                        GameLoop.FireImagesUsed.add(GameLoop.FireImagesUnused.get(randomIndex));
+                        GameLoop.FireImagesUnused.remove(randomIndex);
 
                         Checker checker = new Checker(image, x, y);
                         staticBoardPane.getChildren().add(checker);
 //                        checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     } else {
-                        int randomIndex = new Random().nextInt(GraphicLinkArray.WaterImagesUnused.size());
-                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GraphicLinkArray.WaterImagesUnused.get(randomIndex)).toURI().toString());
-                        GraphicLinkArray.WaterImagesUsed.add(GraphicLinkArray.WaterImagesUnused.get(randomIndex));
-                        GraphicLinkArray.WaterImagesUnused.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
+                        int randomIndex = new Random().nextInt(GameLoop.WaterImagesUnused.size());
+                        Image image = new Image(new File("src/main/resources/app/tapatan/arts/" + GameLoop.WaterImagesUnused.get(randomIndex)).toURI().toString());
+                        GameLoop.WaterImagesUsed.add(GameLoop.WaterImagesUnused.get(randomIndex));
+                        GameLoop.WaterImagesUnused.remove(randomIndex);       //usuwanie kolejnych grafik, aby grafiki pionkow sie nie powtarzaly
 
                         Checker checker = new Checker(image, x, y);
                         staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
@@ -56,7 +56,7 @@ public class Tile extends Rectangle {
                         gameEndAppear();
                     else
                         changeTurnPlayerNr();
-                    if (GraphicLinkArray.FireImagesUnused.isEmpty() && GraphicLinkArray.WaterImagesUnused.isEmpty())
+                    if (GameLoop.FireImagesUnused.isEmpty() && GameLoop.WaterImagesUnused.isEmpty())
                         phase1Complete = true;
                 }
             }

@@ -2,6 +2,9 @@ package app.tapatan.classes;
 
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static app.tapatan.classes.Board.*;
 
 /**
@@ -9,6 +12,10 @@ import static app.tapatan.classes.Board.*;
  */
 
 public class GameLoop {
+    public static ArrayList<String> FireImagesUnused = new ArrayList<>(Arrays.asList("fire_tepig_200.png", "fire_torchic_200.png", "fire_charmander_200.png"));
+    public static ArrayList<String> WaterImagesUnused = new ArrayList<>(Arrays.asList("water_squirtle_200.png", "water_horsea_200.png", "water_piplup_200.png"));
+    public static ArrayList<String> FireImagesUsed = new ArrayList<>();
+    public static ArrayList<String> WaterImagesUsed = new ArrayList<>();
     public static Player[] players = {
                                         new Player(),
                                         new Player()

@@ -1,6 +1,6 @@
 package app.tapatan;
 
-import app.tapatan.classes.GraphicLinkArray;
+import app.tapatan.classes.GameLoop;
 import app.tapatan.classes.TileType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,13 +77,13 @@ public class GameController {
         boardPane.getChildren().add(TapatanGame.board);
 
         for(int i=0; i<3; i++){
-            if(!GraphicLinkArray.WaterImagesUsed.isEmpty()){
-                GraphicLinkArray.WaterImagesUnused.add(GraphicLinkArray.WaterImagesUsed.get(0));
-                GraphicLinkArray.WaterImagesUsed.remove(0);
+            if(!GameLoop.WaterImagesUsed.isEmpty()){
+                GameLoop.WaterImagesUnused.add(GameLoop.WaterImagesUsed.get(0));
+                GameLoop.WaterImagesUsed.remove(0);
             }
-            if(!GraphicLinkArray.FireImagesUsed.isEmpty()){
-                GraphicLinkArray.FireImagesUnused.add(GraphicLinkArray.FireImagesUsed.get(0));
-                GraphicLinkArray.FireImagesUsed.remove(0);
+            if(!GameLoop.FireImagesUsed.isEmpty()){
+                GameLoop.FireImagesUnused.add(GameLoop.FireImagesUsed.get(0));
+                GameLoop.FireImagesUsed.remove(0);
             }
         }
 
