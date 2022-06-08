@@ -44,22 +44,16 @@ public class Checker extends ImageView {
         });
 
         this.setOnMouseReleased(e -> {
-            if (!fieldClickControl) {
-                releasedPoint.x = (int) (e.getSceneX() / TapatanGame.TILE_SIZE);
-                releasedPoint.y = (int) ((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
-                if (phase1Complete) {
-                    if (pressedOK() && releasedOK()) {
-                        setReleasedPosition(players[actualPlayerNumber].tileusage);
-                        winCheck();
-                        if (winConditionsFullfill)
-                            gameEndAppear();
-                        else
-                            changeTurnPlayerNr();
-                    } else
-                        setPressedPosition(players[actualPlayerNumber].tileusage);
-//                    showCheckerInfo("Released", e.getSceneX(), e.getSceneY());
-                }
+            if (fieldClickControl || !phase1Complete) return;
+            releasedPoint.x = (int) (e.getSceneX() / TapatanGame.TILE_SIZE);
+            releasedPoint.y = (int) ((e.getSceneY() - TapatanGame.BOARD_Y_OFFSET) / TapatanGame.TILE_SIZE);
+            if (pressedOK() && releasedOK()) {
+                setReleasedPosition(players[actualPlayerNumber].tileusage);
+                winCheck();
+                if (winConditionsFullfill) gameEndAppear();
+                else changeTurnPlayerNr();
             }
+            else setPressedPosition(players[actualPlayerNumber].tileusage);
         });
     }
 
@@ -74,7 +68,8 @@ public class Checker extends ImageView {
      1. przesunięcie pionka jest na mapie
      2. pole jest puste
      3. przesuwamy sie o jedno pole
-     4. przesunięcie na skos jest zgodne ze ścieżkami na mapie*/
+     4. przesunięcie na skos jest zgodne ze ścieżkami na mapie
+     5. gracz zmienil pole na inne*/
     boolean releasedOK(){
         return !Board.isOutOfBound(releasedPoint) && tileTable[releasedPoint.x][releasedPoint.y].isEmpty() && !isDoubleMove() && !isIllegalCrossMove() && !isNoMove();
     }
