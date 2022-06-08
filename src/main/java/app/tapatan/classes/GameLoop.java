@@ -25,6 +25,7 @@ public class GameLoop {
     public static boolean  phase1Complete = false;
     //ważne ustawia flagę która sprawdza czy kliknięty został dobry pionek
     public static boolean fieldClickControl = false;
+    static final int WIN_COUNT = 3;
     public GameLoop(){
         players[0].tileusage = TileType.TILE_IN_USE_PLAYER_1;
         players[1].tileusage = TileType.TILE_IN_USE_PLAYER_2;
@@ -54,7 +55,7 @@ public class GameLoop {
         }
 
         for (int i : check)
-            if (i == 3) {
+            if (i == WIN_COUNT) {
                 winConditionsFullfill = true;
                 break;
             }
