@@ -13,14 +13,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class TapatanGame extends Application {
-    static public int TILE_SIZE = 200;
-    static public int BOARD_Y_OFFSET = 110;
-    static public Board board = new Board();
+    private static final int WINDOW_WIDTH = 600;
+    private static final int WINDOW_HEIGHT = 710;
+    public static final int TILE_SIZE = 200;
+    public static final int BOARD_Y_OFFSET = 110;
+    public static Board board = new Board();
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(TapatanGame.class.getResource("start.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 710);
+        Scene scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
         GameLoop gameLoop = new GameLoop();
         stage.setResizable(false);
         Image icon = new Image(new File("src/main/resources/app/tapatan/arts/fire_tepig_200.png").toURI().toString());

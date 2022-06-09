@@ -12,32 +12,32 @@ import static app.tapatan.classes.Board.*;
  */
 
 public class GameLoop {
-    public static ArrayList<String> FireImagesUnused = new ArrayList<>(Arrays.asList("fire_tepig_200.png", "fire_torchic_200.png", "fire_charmander_200.png"));
-    public static ArrayList<String> WaterImagesUnused = new ArrayList<>(Arrays.asList("water_squirtle_200.png", "water_horsea_200.png", "water_piplup_200.png"));
-    public static ArrayList<String> FireImagesUsed = new ArrayList<>();
-    public static ArrayList<String> WaterImagesUsed = new ArrayList<>();
+    static ArrayList<String> FireImagesUnused = new ArrayList<>(Arrays.asList("fire_tepig_200.png", "fire_torchic_200.png", "fire_charmander_200.png"));
+    static ArrayList<String> WaterImagesUnused = new ArrayList<>(Arrays.asList("water_squirtle_200.png", "water_horsea_200.png", "water_piplup_200.png"));
+    static ArrayList<String> FireImagesUsed = new ArrayList<>();
+    static ArrayList<String> WaterImagesUsed = new ArrayList<>();
     public static Player[] players = {
                                         new Player(),
                                         new Player()
                                      };
     public static int actualPlayerNumber = 0;
-    public static boolean  winConditionsFullfill = false;
-    public static boolean  phase1Complete = false;
+    static boolean  winConditionsFullfill = false;
+    static boolean  phase1Complete = false;
     //ważne ustawia flagę która sprawdza czy kliknięty został dobry pionek
-    public static boolean fieldClickControl = false;
-    static final int WIN_COUNT = 3;
+    static boolean fieldClickControl = false;
+    private static final int WIN_COUNT = 3;
+
     public GameLoop(){
         players[0].tileusage = TileType.TILE_IN_USE_PLAYER_1;
         players[1].tileusage = TileType.TILE_IN_USE_PLAYER_2;
         players[0].color = Color.RED;
         players[1].color = Color.BLUE;
-
     }
 
     /**
      * metoda sprawdzajaca warunki zwyciestwa aktualnego gracza
      */
-    public static void winCheck(){
+    static void winCheck(){
         int[] check = new int[8];   // tablica przechowująca ilość pionków w {wiersz1, wiersz2, wiersz3, kolumna1, kolumna2, kolumna3, przekątna1, przekątna2}
 
         for (int i = 0; i < Board.getBoardWidth(); i++) {
@@ -59,6 +59,28 @@ public class GameLoop {
                 winConditionsFullfill = true;
                 break;
             }
+    }
+
+    public static void resetGame(){
+        winConditionsFullfill = false;
+        phase1Complete = false;
+
+        for (int x = 0; x < getBoardWidth(); x++) {
+            for (int y = 0; y < getBoardHeight(); y++) {
+                getTileTable()[y][x].tileType = TileType.TILE_EMPTY;
+            }
+        }
+
+        for(int i=0; i<3; i++){
+            if(!WaterImagesUsed.isEmpty()){
+                WaterImagesUnused.add(WaterImagesUsed.get(0));
+                WaterImagesUsed.remove(0);
+            }
+            if(!FireImagesUsed.isEmpty()){
+                FireImagesUnused.add(FireImagesUsed.get(0));
+                FireImagesUsed.remove(0);
+            }
+        }
     }
 
 }
