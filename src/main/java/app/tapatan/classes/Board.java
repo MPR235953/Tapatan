@@ -3,8 +3,8 @@ package app.tapatan.classes;
 import javafx.scene.Group;
 
 public class Board extends Group {
-    private static final int BOARD_WIDTH = 3;
-    private static final int BOARD_HEIGHT = 3;
+    private final static int BOARD_WIDTH = 3;
+    private final static int BOARD_HEIGHT = 3;
     public static Tile[][] tileTable = new Tile[BOARD_HEIGHT][BOARD_WIDTH];
 
     public Board(){
@@ -18,7 +18,7 @@ public class Board extends Group {
     }
 
     /** Do debuggowania, pokazuje aktualny stan planszy */
-    public static void showBoardTypes(){
+    static void showBoardTypes(){
         for (int x = 0; x < BOARD_WIDTH; x++){
             for (int y = 0; y < BOARD_HEIGHT; y++){
                 switch(getTileTable()[y][x].tileType){
@@ -28,9 +28,9 @@ public class Board extends Group {
                     case TILE_IN_USE_PLAYER_2:{ System.out.print("2"); break; }
                 }
             }
-            System.out.println("");
+            System.out.println();
         }
-        System.out.println("");
+        System.out.println();
     }
 
     /** Zwraca true jesli mamy wyjscie poza mape/tablice */

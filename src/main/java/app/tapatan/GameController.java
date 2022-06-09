@@ -1,7 +1,5 @@
 package app.tapatan;
 
-import app.tapatan.classes.GraphicLinkArray;
-import app.tapatan.classes.TileType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-import static app.tapatan.classes.Board.*;
 import static app.tapatan.classes.GameLoop.*;
 
 public class GameController {
@@ -22,16 +19,16 @@ public class GameController {
     @FXML private ImageView map;
     @FXML private ImageView pane;
     @FXML private Label turnPlayerNr = new Label();
-    public static Label staticTurnPlayerNr;
+    private static Label staticTurnPlayerNr;
     @FXML private Pane boardPane;
     public static Pane staticBoardPane;
     @FXML Pane gameEndPane;
     public static Pane staticGameEndPane;
     @FXML private Label endPlayerNr = new Label();
-    public static Label staticEndPlayerNr;
+    private static Label staticEndPlayerNr;
 
     @FXML
-    public void initialize(){
+    private void initialize(){
         staticBoardPane = boardPane;
         staticTurnPlayerNr = turnPlayerNr;
         staticTurnPlayerNr.setTextFill(Color.RED);
@@ -42,51 +39,32 @@ public class GameController {
         boardPane.getChildren().add(TapatanGame.board);
     }
 
-    static public void changeTurnPlayerNr(){
+    public static void changeTurnPlayerNr(){
         actualPlayerNumber = (actualPlayerNumber + 1) % 2;
         staticTurnPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
         staticTurnPlayerNr.setTextFill(players[actualPlayerNumber].color);
     }
 
-    static public void gameEndAppear(){
+    public static void gameEndAppear(){
         staticEndPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
         staticEndPlayerNr.setTextFill(players[actualPlayerNumber].color);
         staticGameEndPane.setVisible(true);
     }
 
-    static public void gameEndDisappear(){ staticGameEndPane.setVisible(false); }
+    private void gameEndDisappear(){ staticGameEndPane.setVisible(false); }
 
     public void closeGame(ActionEvent actionEvent) {
         ((Stage)root.getScene().getWindow()).close();
     }
 
-    public void gameRestart(ActionEvent actionEvent) {
-        changeTurnPlayerNr();
-        winConditionsFullfill = false;
-        phase1Complete = false;
-
-        for (int x = 0; x < getBoardWidth(); x++) {
-            for (int y = 0; y < getBoardHeight(); y++) {
-                getTileTable()[y][x].tileType = TileType.TILE_EMPTY;
-            }
-        }
-
+    public void restartGame(ActionEvent actionEvent) {
         staticBoardPane.getChildren().clear();
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
         boardPane.getChildren().add(map);
         boardPane.getChildren().add(TapatanGame.board);
 
-        for(int i=0; i<3; i++){
-            if(!GraphicLinkArray.WaterImagesUsed.isEmpty()){
-                GraphicLinkArray.WaterImagesUnused.add(GraphicLinkArray.WaterImagesUsed.get(0));
-                GraphicLinkArray.WaterImagesUsed.remove(0);
-            }
-            if(!GraphicLinkArray.FireImagesUsed.isEmpty()){
-                GraphicLinkArray.FireImagesUnused.add(GraphicLinkArray.FireImagesUsed.get(0));
-                GraphicLinkArray.FireImagesUsed.remove(0);
-            }
-        }
-
+        changeTurnPlayerNr();
+        resetGame();
         gameEndDisappear();
     }
 }
