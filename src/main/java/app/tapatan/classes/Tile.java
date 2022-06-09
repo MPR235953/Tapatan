@@ -29,7 +29,7 @@ public class Tile extends Rectangle {
         //utworzenie pionka po kliknieciu w kafelek i nadanie kafelkowi odpowiednich atrybutow
         this.setOnMouseClicked(e ->{
             if(!phase1Complete) {
-                if (this.tileType == TILE_EMPTY) {
+                if (this.tileType == TILE_EMPTY && !winConditionsFullfill) {
                     this.tileType = players[actualPlayerNumber].tileusage;
 
                     if (actualPlayerNumber == 0) {
