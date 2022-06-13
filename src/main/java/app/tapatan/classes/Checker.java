@@ -47,6 +47,7 @@ class Checker extends ImageView {
             if (pressedOK() && releasedOK()) {
                 setReleasedPosition(players[actualPlayerNumber].tileusage);
                 winCheck();
+                players[actualPlayerNumber].turnCounter++;
                 if (winConditionsFullfill) gameEndAppear();
                 else changeTurnPlayerNr();
             }

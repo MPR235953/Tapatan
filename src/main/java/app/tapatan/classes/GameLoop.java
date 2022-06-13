@@ -81,6 +81,9 @@ public class GameLoop {
                 FireImagesUsed.remove(0);
             }
         }
+
+        players[0].turnCounter = 0;
+        players[1].turnCounter = 0;
     }
 
 }
