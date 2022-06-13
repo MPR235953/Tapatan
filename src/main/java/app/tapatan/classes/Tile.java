@@ -51,6 +51,7 @@ public class Tile extends Rectangle {
                         staticBoardPane.getChildren().add(checker);       //wyswietlenie grafiki poprzez statycznego Pane
                         //checker.showCheckerInfo("Initialize", e.getSceneX(), e.getSceneY());
                     }
+                    players[actualPlayerNumber].turnCounter++;
                     winCheck();
                     if (winConditionsFullfill)
                         gameEndAppear();

@@ -6,4 +6,5 @@ import javafx.scene.paint.Color;
 public class Player {
     public Color color = Color.BLACK;
     TileType tileusage = TileType.TILE_EMPTY;
+    public int turnCounter = 0;
 }

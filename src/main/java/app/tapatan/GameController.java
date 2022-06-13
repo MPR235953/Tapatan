@@ -26,6 +26,9 @@ public class GameController {
     public static Pane staticGameEndPane;
     @FXML private Label endPlayerNr = new Label();
     private static Label staticEndPlayerNr;
+    @FXML private Label TurnCount = new Label();
+    public static Label staticTurnCount;
+
 
     @FXML
     private void initialize(){
@@ -34,6 +37,7 @@ public class GameController {
         staticTurnPlayerNr.setTextFill(Color.RED);
         staticGameEndPane = gameEndPane;
         staticEndPlayerNr = endPlayerNr;
+        staticTurnCount = TurnCount;
         map.setImage(new Image(new File("src/main/resources/app/tapatan/arts/map_600.png").toURI().toString()));
         pane.setImage(new Image(new File("src/main/resources/app/tapatan/arts/pane.png").toURI().toString()));
         boardPane.getChildren().add(TapatanGame.board);
@@ -43,11 +47,13 @@ public class GameController {
         actualPlayerNumber = (actualPlayerNumber + 1) % 2;
         staticTurnPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
         staticTurnPlayerNr.setTextFill(players[actualPlayerNumber].color);
+        staticTurnCount.setText(String.valueOf((players[actualPlayerNumber].turnCounter)));
     }
 
     public static void gameEndAppear(){
         staticEndPlayerNr.setText(String.valueOf(actualPlayerNumber+1));
         staticEndPlayerNr.setTextFill(players[actualPlayerNumber].color);
+        staticTurnCount.setText(String.valueOf((players[actualPlayerNumber].turnCounter)));
         staticGameEndPane.setVisible(true);
     }
 
@@ -65,6 +71,7 @@ public class GameController {
 
         changeTurnPlayerNr();
         resetGame();
+        staticTurnCount.setText(String.valueOf((players[actualPlayerNumber].turnCounter)));
         gameEndDisappear();
     }
 }
